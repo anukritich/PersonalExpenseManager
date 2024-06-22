@@ -4,11 +4,12 @@ import java.sql.*;
 
 public class Conn{
     Connection connection;
-
+    Statement statement;
     public Conn(){
         try{
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ExpenseManage","root","data@java")
-
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ExpenseManage","root","data@java");
+            statement = connection.createStatement();
         }catch (Exception e){
             e.printStackTrace();
         }
