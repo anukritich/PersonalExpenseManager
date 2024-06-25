@@ -1,5 +1,13 @@
 # PersonalFinanceManager
 A java desktop application for personal expense management.
-<p>Tools and Platforms:</p>
+<p> Platform(IDE):</p>
 <p>https://www.jetbrains.com/idea/</p>
-<p>https://www.mysql.com/</p>
+<p>Languages and Tools:</p>
+  <a href="https://www.java.com" target="_blank" rel="noreferrer">
+    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java" width="40" height="40"/>
+  </a>
+  <a href="https://www.mysql.com/" target="_blank" rel="noreferrer">
+    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="mysql" width="40" height="40"/>
+  </a>
+
+
