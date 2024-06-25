@@ -28,7 +28,7 @@ public class login extends JFrame implements ActionListener  {
         label1.setBounds(160, 35, 450, 45);
         add(label1);
 
-        label2 = new JLabel("E-mail:");
+        label2 = new JLabel("Username:");
         label2.setFont(new Font("Raleway", Font.BOLD, 28));
         label2.setForeground(new Color(110, 38, 14));
         label2.setBounds(100, 150, 375, 30);
@@ -90,7 +90,7 @@ public class login extends JFrame implements ActionListener  {
                 ResultSet resultSet = c.statement.executeQuery(q);
                 if (resultSet.next()) {
                     setVisible(false);
-                    new main_Class  (pass); // Assuming `pin` is `pass`
+                    new main_Class  (); // Assuming `pin` is `pass`
                 } else {
                     JOptionPane.showMessageDialog(null, "Incorrect Email or Password");
                 }
