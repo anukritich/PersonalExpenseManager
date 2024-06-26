@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 
 public class main_Class extends JFrame implements ActionListener {
     JButton button1;
@@ -83,11 +84,36 @@ public class main_Class extends JFrame implements ActionListener {
         totalExpenseLabel.setBounds(320, 270, 200, 30);
         add(totalExpenseLabel);
 
+        fetchEntriesFromDatabase();
         setLayout(null);
         setSize(600, 400);
         setLocation(350, 200);
         setVisible(true);
     }
+    private void fetchEntriesFromDatabase() {
+        try {
+            Conn c = new Conn();
+            String q = "SELECT Date, Name, Price FROM entry";
+            ResultSet resultSet = c.statement.executeQuery(q);
+            while (resultSet.next()) {
+                String d = resultSet.getString("Date");
+                String n = resultSet.getString("Name");
+                String p = resultSet.getString("Price");
+                String expenseItem = d + "\t" + n + "\t" + p + "\n";
+                expenseListArea.append(expenseItem);
+
+                // Update total expense
+                totalExpense += Double.parseDouble(p);
+            }
+
+            // Update total expense label
+            totalExpenseLabel.setText("Total Expense: ₹" + String.format("%.2f", totalExpense));
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
