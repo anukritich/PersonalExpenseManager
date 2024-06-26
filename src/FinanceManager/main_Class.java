@@ -1,16 +1,21 @@
 package FinanceManager;
 
+import com.toedter.calendar.JDateChooser;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import com.toedter.calendar.JDateChooser;
 
 public class main_Class extends JFrame implements ActionListener {
     JButton button1;
     JLabel label, label1, label2, label3;
     JTextField textname, textprice;
     JDateChooser dateChooser;
+    JTextArea expenseListArea;
+    JScrollPane scrollPane;
+    JLabel totalExpenseLabel;
+    double totalExpense = 0.0;
 
     main_Class() {
         super("Expense Manager");
@@ -61,6 +66,23 @@ public class main_Class extends JFrame implements ActionListener {
         textprice.setFont(new Font("Arial", Font.ITALIC, 14));
         add(textprice);
 
+        JLabel expenseListHeading = new JLabel("Expense List");
+        expenseListHeading.setFont(new Font("AvantGarde", Font.PLAIN, 20));
+        expenseListHeading.setBounds(320, 10, 150, 40);
+        add(expenseListHeading);
+
+        expenseListArea = new JTextArea();
+        expenseListArea.setText("Date\tName\tPrice (INR)\n");
+        expenseListArea.setEditable(false);
+        scrollPane = new JScrollPane(expenseListArea);
+        scrollPane.setBounds(320, 60, 250, 200);
+        add(scrollPane);
+
+        totalExpenseLabel = new JLabel("Total Expense: ₹0.00");
+        totalExpenseLabel.setFont(new Font("AvantGarde", Font.PLAIN, 15));
+        totalExpenseLabel.setBounds(320, 270, 200, 30);
+        add(totalExpenseLabel);
+
         setLayout(null);
         setSize(600, 400);
         setLocation(350, 200);
@@ -79,17 +101,26 @@ public class main_Class extends JFrame implements ActionListener {
 
             try {
                 if (e.getSource() == button1) {
-                    Conn c1 = new Conn();
-                    String q = "INSERT INTO entry (Date, Name, Price) VALUES ('" + sqlDate + "', '" + name + "', '" + price + "')";
-                    c1.statement.executeUpdate(q);
-                    System.out.println("Data inserted successfully");
-                    setVisible(false);
+                    // Update expense list
+                    String expenseItem = sqlDate + "\t" + name + "\t" + price + "\n";
+                    expenseListArea.append(expenseItem);
+
+                    // Update total expense
+                    totalExpense += Double.parseDouble(price);
+                    totalExpenseLabel.setText("Total Expense: ₹" + String.format("%.2f", totalExpense));
+
+                    // Clear input fields
+                    textname.setText("");
+                    textprice.setText("");
+                    dateChooser.setDate(null);
                 }
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(this, "Please enter a valid price.", "Invalid Input", JOptionPane.ERROR_MESSAGE);
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Please select a date");
+            JOptionPane.showMessageDialog(this, "Please select a date.", "Missing Date", JOptionPane.ERROR_MESSAGE);
         }
     }
 
