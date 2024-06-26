@@ -12,6 +12,7 @@ public class Signup extends JFrame implements ActionListener {
     JTextField textName, textEmail, textUsername, phonenumber;
     JPasswordField psw;
     JButton button1;
+     Color color  = new Color(110, 38, 14);
 
     Signup() {
         super("Expense Manager");
@@ -25,10 +26,12 @@ public class Signup extends JFrame implements ActionListener {
         JLabel label1 = new JLabel(" Create an Account ");
         label1.setBounds(160, 20, 600, 40);
         label1.setFont(new Font("Raleway", Font.BOLD, 38));
+        label1.setForeground(color);
         add(label1);
 
         JLabel labelName = new JLabel("Full Name:");
         labelName.setFont(new Font("Raleway", Font.BOLD, 25));
+        labelName.setForeground(color);
         labelName.setBounds(100, 190, 400, 30);
         add(labelName);
 
@@ -39,6 +42,7 @@ public class Signup extends JFrame implements ActionListener {
 
         JLabel labelmail = new JLabel("Email:");
         labelmail.setFont(new Font("Raleway", Font.BOLD, 25));
+        labelmail.setForeground(color);
         labelmail.setBounds(100, 240, 400, 30);
         add(labelmail);
 
@@ -49,6 +53,7 @@ public class Signup extends JFrame implements ActionListener {
 
         JLabel labelpsw = new JLabel("Password:");
         labelpsw.setFont(new Font("Raleway", Font.BOLD, 25));
+        labelpsw.setForeground(color);
         labelpsw.setBounds(100, 290, 400, 30);
         add(labelpsw);
 
@@ -58,6 +63,7 @@ public class Signup extends JFrame implements ActionListener {
 
         JLabel labelusername = new JLabel("Username:");
         labelusername.setFont(new Font("Raleway", Font.BOLD, 25));
+        labelusername.setForeground(color);
         labelusername.setBounds(100, 340, 400, 30);
         add(labelusername);
 
@@ -68,6 +74,7 @@ public class Signup extends JFrame implements ActionListener {
 
         JLabel labelcontact = new JLabel("Phone Number:");
         labelcontact.setFont(new Font("Raleway", Font.BOLD, 25));
+        labelcontact.setForeground(color);
         labelcontact.setBounds(100, 390, 400, 30);
         add(labelcontact);
 
@@ -80,13 +87,13 @@ public class Signup extends JFrame implements ActionListener {
         button1.setFont(new Font("Arial", Font.BOLD, 14));
         button1.setForeground(new Color(110, 38, 14));
         button1.setBackground(new Color(218, 160, 109));
-        button1.setBounds(300, 540, 100, 30);
+        button1.setBounds(350, 480, 100, 30);
         button1.addActionListener(this);
         add(button1);
 
-        getContentPane().setBackground(new Color(140, 229, 245));
+        getContentPane().setBackground(new Color(253, 253, 253));
         setLayout(null);
-        setSize(850, 700);
+        setSize(800, 650);
         setLocation(250, 40);
         setVisible(true);
     }

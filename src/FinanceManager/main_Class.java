@@ -17,6 +17,7 @@ public class main_Class extends JFrame implements ActionListener {
     JScrollPane scrollPane;
     JLabel totalExpenseLabel;
     double totalExpense = 0.0;
+    Color color  = new Color(110, 38, 14);
 
     main_Class() {
         super("Expense Manager");
@@ -32,12 +33,13 @@ public class main_Class extends JFrame implements ActionListener {
 
         label = new JLabel("Add Expense");
         label.setForeground(Color.black);
+        label.setForeground(color);
         label.setFont(new Font("AvantGarde", Font.PLAIN, 20));
         label.setBounds(80, 10, 1000, 45);
         add(label);
 
         label1 = new JLabel("Date:");
-        label1.setForeground(Color.black);
+        label1.setForeground(color);
         label1.setFont(new Font("AvantGarde", Font.ITALIC, 15));
         label1.setBounds(40, 65, 1000, 45);
         add(label1);
@@ -48,7 +50,7 @@ public class main_Class extends JFrame implements ActionListener {
         add(dateChooser);
 
         label2 = new JLabel("Name:");
-        label2.setForeground(Color.black);
+        label2.setForeground(color);
         label2.setFont(new Font("AvantGarde", Font.ITALIC, 15));
         label2.setBounds(40, 120, 1000, 45);
         add(label2);
@@ -58,7 +60,7 @@ public class main_Class extends JFrame implements ActionListener {
         add(textname);
 
         label3 = new JLabel("Price:");
-        label3.setForeground(Color.black);
+        label3.setForeground(color);
         label3.setFont(new Font("AvantGarde", Font.ITALIC, 15));
         label3.setBounds(40, 175, 1000, 45);
         add(label3);
@@ -69,6 +71,7 @@ public class main_Class extends JFrame implements ActionListener {
 
         JLabel expenseListHeading = new JLabel("Expense List");
         expenseListHeading.setFont(new Font("AvantGarde", Font.PLAIN, 20));
+        expenseListHeading.setForeground(color);
         expenseListHeading.setBounds(320, 10, 150, 40);
         add(expenseListHeading);
 
@@ -86,7 +89,7 @@ public class main_Class extends JFrame implements ActionListener {
 
         fetchEntriesFromDatabase();
         setLayout(null);
-        setSize(600, 400);
+        setSize(650, 400);
         setLocation(350, 200);
         setVisible(true);
     }
