@@ -84,9 +84,9 @@ public class login extends JFrame implements ActionListener  {
         try {
             if (e.getSource() == button1) {
                 Conn c = new Conn();
-                String email = textField2.getText();
+                String username = textField2.getText();
                 String pass = new String(passwordField3.getPassword());
-                String q = "select * from login where email = '" + email + "' and password = '" + pass + "'";
+                String q = "select * from signup where username = '" + username + "' and passkey = '" + pass + "'";
                 ResultSet resultSet = c.statement.executeQuery(q);
                 if (resultSet.next()) {
                     setVisible(false);

@@ -105,31 +105,32 @@ public class Signup extends JFrame implements ActionListener {
             if (Name.isEmpty() || email.isEmpty() || username.isEmpty() || contact.isEmpty() || passkey.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Fill all entries");
             } else {
-                String hashedPasskey = hashPassword(passkey);
+                String hashedPasskey = passkey;
                 Conn con1 = new Conn();
                 String q = "INSERT INTO signup (Name, email, username, contact, passkey) VALUES ('" + Name + "', '" + email + "', '" + username + "', '" + contact + "', '" + hashedPasskey + "')";
                 con1.statement.executeUpdate(q);  //to input values into table
                 System.out.println("Data inserted successfully");
                 setVisible(false);
+                new login();
             }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
-    private String hashPassword(String password) {
-        try {
-            MessageDigest md = MessageDigest.getInstance("SHA-256");
-            byte[] hashedBytes = md.digest(password.getBytes());
-            StringBuilder sb = new StringBuilder();
-            for (byte b : hashedBytes) {
-                sb.append(String.format("%02x", b));
-            }
-            return sb.toString();
-        } catch (NoSuchAlgorithmException ex) {
-            throw new RuntimeException(ex);
-        }
-    }
+//    private String hashPassword(String password) {
+//        try {
+//            MessageDigest md = MessageDigest.getInstance("SHA-256");
+//            byte[] hashedBytes = md.digest(password.getBytes());
+//            StringBuilder sb = new StringBuilder();
+//            for (byte b : hashedBytes) {
+//                sb.append(String.format("%02x", b));
+//            }
+//            return sb.toString();
+//        } catch (NoSuchAlgorithmException ex) {
+//            throw new RuntimeException(ex);
+//        }
+//    }
 
     public static void main(String[] args) {
         new Signup();

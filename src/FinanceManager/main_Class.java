@@ -102,6 +102,10 @@ public class main_Class extends JFrame implements ActionListener {
             try {
                 if (e.getSource() == button1) {
                     // Update expense list
+                    Conn c1 = new Conn();
+                    String q = "INSERT INTO entry (Date, Name, Price) VALUES ('" + sqlDate + "', '" + name + "', '" + price + "')";
+                    c1.statement.executeUpdate(q);
+                    System.out.println("Data inserted successfully");
                     String expenseItem = sqlDate + "\t" + name + "\t" + price + "\n";
                     expenseListArea.append(expenseItem);
 
